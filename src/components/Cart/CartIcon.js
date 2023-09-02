@@ -1,7 +1,7 @@
 import React from 'react';
-import style from './Cart.module.css';
+import style from './CartIcon.module.css';
 
-function Cart(){
+function CartIcon(){
     return (
         <React.Fragment>
             <button className={style.button}>
@@ -13,4 +13,4 @@ function Cart(){
     );
 }
 
-export default Cart;
+export default CartIcon;
