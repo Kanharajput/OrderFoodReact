@@ -1,26 +1,28 @@
-import {Fragment} from 'react';
 import style from './AvailableMeals.module.css';
+import Card from './../UI/Card';
+import MealItem from './../Meals/MealItem';
 
 const meals = [
-    {name: 'Dal Bati'},
-    {name: 'Kaju katli'},
-    {name: 'Ras malai'},
-    {name: 'Gula Jamun'},
-    {name: 'Sev Tamatar'},
-
+    { name: 'Dal Bati', description: 'Rajasthan famous dish', price: '₹120'},
+    { name: 'Kaju katli', description: `Rajat's Favourite'`, price: '₹400'},
+    { name: 'Ras Malayi', description: 'Friend of Gulab Jamun', price: '₹300'},
+    { name: 'Gulab Jamun', description: 'Featured Item of the day', price: '₹200'},
+    { name: 'Sev Tamatar', description: 'My favourite dish', price: '₹140'},
+    { name: 'Halwa', description: 'Dont chew just swallow', price: '₹200'},
+    { name: 'Paneer', description: `Donkey's milk paneer is very costly`, price: '₹4000'}
 ];
 
 function AvailableMeals(){
     return (
-        <Fragment>
+        <Card>
             <div className={style.meals}>
                 <ul>
-                    {meals.map((item)=>{
-                        return (<li>{item.name}</li>)
+                    {meals.map((item) => {
+                        return (<li>{<MealItem name={item.name} description={item.description} price={item.price}/>}</li>)
                     })}
                 </ul>
             </div>
-        </Fragment>
+        </Card>
     );
 }
 
