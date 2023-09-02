@@ -11,6 +11,11 @@
     padding: 0;
 }
 
+.meals ul li{
+    display: flex;
+    justify-content: space-between;
+}
+
 @keyframes meals-appear {
     from {
         opacity: 0;
