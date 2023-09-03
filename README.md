@@ -23,3 +23,10 @@ return (
 <input {...props.input}>
 )
 ```
+
+### Who needs the props
+- CartIcon having badge(count of item to order).(It's parent comp is Header)
+- Cart having the selected item data. (It's parent comp is Header)
+- MealItem needs the list of food item. (It's parent comp is AvailableMeals)
+- Header and AvailableMeals parent comp is App. so we are going to wrap everything inside the App by CartProvider which
+  is an comp of CartContext
