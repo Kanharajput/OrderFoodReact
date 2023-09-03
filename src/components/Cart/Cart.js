@@ -1,7 +1,8 @@
 import style from './Cart.module.css';
 import Modal from './../Layout/Modal';
 
-function Cart(){
+
+function Cart(props){
 
     // dummy item
     // created a list in jsx
@@ -12,6 +13,13 @@ function Cart(){
             (<li>{item.name}</li>)
         )}</ul>
 
+    
+    const orderIt = () => {
+        // right now just sending dummy data
+        props.onOrder({ name: "Gulab Jamun", count: 5, price:"₹200"});
+    }
+
+
     return (
         <Modal>
             {item_name}
@@ -20,8 +28,8 @@ function Cart(){
                 <span>₹120</span>
             </div>
             <div className={style.actions}>
-                <button className={style['button--alt']}>Close</button>
-                <button className={style.button}>Order</button>
+                <button onClick={props.onClose} className={style['button--alt']}>Close</button>
+                <button onClick={orderIt} className={style.button}>Order</button>
             </div>
         </Modal>
     );
