@@ -2,7 +2,7 @@ import CartContext from './cart-context';
 import { useReducer } from 'react';
 
 // default or initial state
-const defaultState = {
+const initialStateValues = {
     items:[], 
     totalAmount:0
 };
@@ -15,14 +15,14 @@ const updateCart = (state, action) => {
         return ({items: updatedItems,totalAmount: updatedAmount});
     }
 
-    return defaultState;
+    return initialStateValues;
 }
 
 
 
 const CartProvider = (props) => {
 
-    const [currentCart, dispatchCart] = useReducer(updateCart, defaultState);
+    const [currentCart, dispatchCart] = useReducer(updateCart, initialStateValues);
     
     const addItemToCartHandler = (item) => {
         dispatchCart({type:"ADD", item: item})

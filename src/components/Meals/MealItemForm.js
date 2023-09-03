@@ -6,10 +6,19 @@ import { useRef } from 'react';
 function MealItemForm(props){
 
   const inputRef = useRef();
-  
+
   const submitHandler = event => {
     event.preventDefault();
-    console.log(inputRef.current.value);
+
+    const itemCount = inputRef.current.value;
+    const itemCountNo = +itemCount;            // convert to number
+
+    if(itemCount.trim().length === 0 || itemCountNo < 1 || itemCountNo > 5){
+      return;
+    }
+    // upper component has all the data regarding items 
+    // so get items to order list from their
+    props.addItemToCart(itemCountNo);
   }
   
   return (
@@ -25,7 +34,7 @@ function MealItemForm(props){
             defaultValue:"1"
           }}
         />        
-        <button>+Add</button>
+        <button type="submit">+Add</button>
     </form>
   );
 }
