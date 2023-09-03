@@ -18,7 +18,17 @@ function AvailableMeals(){
             <div className={style.meals}>
                 <ul>
                     {meals.map((item) => {
-                        return (<li>{<MealItem id={item.id} key={item.id} name={item.name} description={item.description} price={item.price}/>}</li>)
+                        return (
+                          <li> {
+                            <MealItem 
+                              id={item.id} 
+                              key={item.id} 
+                              name={item.name} 
+                              description={item.description} 
+                              price={item.price}/>
+                              }
+                          </li>
+                        )
                     })}
                 </ul>
             </div>

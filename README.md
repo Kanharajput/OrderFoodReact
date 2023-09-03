@@ -30,3 +30,5 @@ return (
 - MealItem needs the list of food item. (It's parent comp is AvailableMeals)
 - Header and AvailableMeals parent comp is App. so we are going to wrap everything inside the App by CartProvider which
   is an comp of CartContext
+
+  

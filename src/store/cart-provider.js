@@ -12,7 +12,7 @@ const CartProvider = (props) => {
 
     // it's dummy right now
     // it will be stateful later on
-    const cartContext ={
+    const cartContext = {
         items:[],
         totalAmount:0,
         addItem: addItemToCartHandler,

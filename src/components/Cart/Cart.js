@@ -1,7 +1,6 @@
 import style from './Cart.module.css';
 import Modal from './../Layout/Modal';
 
-
 function Cart(props){
 
     // dummy item

@@ -5,6 +5,8 @@ import React from "react";
 // we are only writing it here so that vscode will provide hints or emment
 //  to access this variables and functions
 const CartContext = React.createContext({
+    // here item is not all food items we have in shop
+    // this items list contains only those which are selected by user.
     items:[],
     totalAmount:0,
     addItem: () => {},
