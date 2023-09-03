@@ -1,4 +1,5 @@
 import style from './Cart.module.css';
+import Modal from './../Layout/Modal';
 
 function Cart(){
 
@@ -12,7 +13,7 @@ function Cart(){
         )}</ul>
 
     return (
-        <div>
+        <Modal>
             {item_name}
             <div className={style.total}>
                 <span>Total</span>
@@ -22,7 +23,7 @@ function Cart(){
                 <button className={style['button--alt']}>Close</button>
                 <button className={style.button}>Order</button>
             </div>
-        </div>
+        </Modal>
     );
 }
 
