@@ -8,7 +8,7 @@ const CartContext = React.createContext({
     // here item is not all food items we have in shop
     // this items list contains only those which are selected by user.
     items:[],
-    totalAmount:0,
+    totalPrice:0,
     addItem: () => {},
     removeItem: () => {}
 });

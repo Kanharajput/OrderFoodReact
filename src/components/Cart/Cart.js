@@ -1,34 +1,53 @@
 import style from './Cart.module.css';
 import Modal from './../Layout/Modal';
+import CartContext from '../../store/cart-context';
+import { useContext } from 'react';
+import CartItem from './CartItem';
 
-function Cart(props){
 
-    // dummy item
-    // created a list in jsx
-    // start by creating a list then apply map over it 
-    // then return li from map then cover all inside ul
-    const item_name = <ul className={style['cart-items']}> {
-        [{ id: "1", name: "Dal Bati", amount: "₹120", count:2 }].map((item)=>
-            (<li>{item.name}</li>)
-        )}</ul>
+function Cart(props) {
 
-    
-    const orderIt = () => {
-        // right now just sending dummy data
-        props.onOrder({ name: "Gulab Jamun", count: 5, price:"₹200"});
+    const cartCtx = useContext(CartContext);
+
+    const hasItems = cartCtx.items.length > 0;         // if no item added to cart then remove order button
+    const totalPrice = cartCtx.totalPrice;             
+
+    const cartItemAddHandler = (item) => {
+        cartCtx.addItem({...item, amount:1})
     }
 
+    const cartItemRemoveHandler = (id) => { 
+        cartCtx.removeItem(id);
+    }
+
+    const cartItemList = <ul className={style['cart-items']}> {
+        cartCtx.items.map((item) => <li>
+                <CartItem 
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    price={item.price}
+                    amount={item.amount}
+                    onAdd={cartItemAddHandler.bind(null,item)} 
+                    onRemove={cartItemRemoveHandler.bind(null, item.id)}/>
+                </li>)
+            }</ul>
+            
+    // const orderIt = () => {
+    //     // right now just sending dummy data
+    //     props.onOrder({ name: "Gulab Jamun", count: 5, price: "₹200" });
+    // }
 
     return (
-        <Modal>
-            {item_name}
+        <Modal onClick={props.onClose}>
+            {cartItemList}
             <div className={style.total}>
-                <span>Total</span>
-                <span>₹120</span>
+                <span>Total Price</span>
+                <span>₹{totalPrice}</span>
             </div>
             <div className={style.actions}>
-                <button onClick={props.onClose} className={style['button--alt']}>Close</button>
-                <button onClick={orderIt} className={style.button}>Order</button>
+                <button className={style['button--alt']} onClick={props.onClose}> Close</button>
+                {hasItems && <button className={style.button} onClick={props.onOrder}>Order</button>}
             </div>
         </Modal>
     );

@@ -4,19 +4,20 @@ import { useReducer } from 'react';
 // default or initial state
 const initialStateValues = {
     items:[], 
-    totalAmount:0
+    totalPrice: 0,
 };
 
 // update the states
 const updateCart = (state, action) => {
     if(action.type == "ADD"){
         const updatedItems = state.items.concat(action.item);
-        const updatedAmount = state.totalAmount + action.item.price * action.item.amount;
-        return ({items: updatedItems,totalAmount: updatedAmount});
+        // amount specify the item's count which is the part of item
+        const updatedPrice = state.totalPrice + (action.item.price * action.item.amount);
+        return ({items: updatedItems,totalPrice: updatedPrice});
     }
 
     return initialStateValues;
-}
+}   
 
 
 
@@ -29,6 +30,7 @@ const CartProvider = (props) => {
     }  
     
     const removeItemFromCartHandler = () => {
+        
 
     }
 
@@ -36,7 +38,7 @@ const CartProvider = (props) => {
     // it will be stateful later on
     const cartContext = {
         items: currentCart.items,
-        totalAmount: currentCart.totalAmount,
+        totalPrice: currentCart.totalPrice,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler,
     }

@@ -25,7 +25,7 @@ function MealItem(props) {
             <div className={style.meal}>
                 <h3>{props.name}</h3>
                 <p className={style.description}>{props.description}</p>
-                <p className={style.price}>{props.price}</p>
+                <p className={style.price}>₹{props.price}</p>
             </div>
             <MealItemForm id={props.id} addItemToCart={addToOrderList}/>
         </Fragment>
